@@ -15,6 +15,12 @@ List Item
 Datasheet: 
 https://download.schneider-electric.com/files?p_enDocType=Instruction+sheet&p_File_Name=MS18524.pdf&p_Doc_Ref=MS18524
 
+![IMG_20210930_115609](https://user-images.githubusercontent.com/50385294/136680298-2959f330-0586-41ed-94dd-7bfbbf4e573d.jpg)
+on
+
+https://user-images.githubusercontent.com/50385294/136680295-353ed07f-f13a-4bfe-ab77-924106c39e8f.mp4
+
+
 
 Dimension
 
