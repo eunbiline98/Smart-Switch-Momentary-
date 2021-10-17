@@ -30,7 +30,7 @@ mqtt:
 
 switch:
   - platform: mqtt
-    name: "PIR Sensor"
+    name: "General Lamp"
     state_topic: "switch/bedroom1/1/state"
     command_topic: "switch/1/command"
     payload_on: "1"
@@ -38,7 +38,7 @@ switch:
     
  switch:
   - platform: mqtt
-    name: "PIR Sensor"
+    name: "Cove Lighting"
     state_topic: "switch/bedroom1/2/state"
     command_topic: "switch/2/command"
     payload_on: "1"
