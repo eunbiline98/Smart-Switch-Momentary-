@@ -12,15 +12,38 @@ List Item
 - Terminal Screw 6 Pin Hole
 - Push Button (schneider momentary switch)
 
+# Home Assistant
+Under covers in HA, use this config
+```
+mqtt:
+  broker: "Your IP Broker/server"
+  port: Your port MQTT
+  username: "Your username"
+  password: Your password
+
+switch:
+  - platform: mqtt
+    name: "PIR Sensor"
+    state_topic: "switch/bedroom1/1/state"
+    command_topic: "switch/1/command"
+    payload_on: "1"
+    payload_off: "0"
+    
+ switch:
+  - platform: mqtt
+    name: "PIR Sensor"
+    state_topic: "switch/bedroom1/2/state"
+    command_topic: "switch/2/command"
+    payload_on: "1"
+    payload_off: "0"
+```
+
 Datasheet: 
 https://download.schneider-electric.com/files?p_enDocType=Instruction+sheet&p_File_Name=MS18524.pdf&p_Doc_Ref=MS18524
 
 ![IMG_20210930_115609](https://user-images.githubusercontent.com/50385294/136680298-2959f330-0586-41ed-94dd-7bfbbf4e573d.jpg)
-on
 
-https://user-images.githubusercontent.com/50385294/136680295-353ed07f-f13a-4bfe-ab77-924106c39e8f.mp4
-
-
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DARuhkKLw8E/0.jpg)](https://www.youtube.com/watch?v=DARuhkKLw8E")
 
 Dimension
 
