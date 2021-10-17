@@ -10,7 +10,14 @@ List Item
 - Diode 1N4007 SMD
 - Transistor 2n2222a
 - Terminal Screw 6 Pin Hole
-- Push Button (schneider momentary switch)
+- Push Button (schneider momentary switch) Datasheet: https://download.schneider-electric.com/files?p_enDocType=Instruction+sheet&p_File_Name=MS18524.pdf&p_Doc_Ref=MS18524
+
+# Schematic 
+![schematic momentary switch wifi](https://user-images.githubusercontent.com/50385294/137615797-40eabae7-91a9-4d51-8ee7-6c4925abf029.png)
+
+# Layout 
+![top](https://user-images.githubusercontent.com/50385294/137615904-3dadf27e-84cb-428c-ba0b-feadd11fd143.PNG)
+![bottom](https://user-images.githubusercontent.com/50385294/137615920-cbbb3435-f090-4ed2-a7e0-80b1b173c4fb.PNG)
 
 # Home Assistant
 Under covers in HA, use this config
@@ -38,14 +45,14 @@ switch:
     payload_off: "0"
 ```
 
-Datasheet: 
-https://download.schneider-electric.com/files?p_enDocType=Instruction+sheet&p_File_Name=MS18524.pdf&p_Doc_Ref=MS18524
-
 ![IMG_20210930_115609](https://user-images.githubusercontent.com/50385294/136680298-2959f330-0586-41ed-94dd-7bfbbf4e573d.jpg)
 
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/DARuhkKLw8E/0.jpg)](https://www.youtube.com/watch?v=DARuhkKLw8E")
 
-Dimension
+# Reference
+- WiFi Manager (https://github.com/tzapu/WiFiManager)
+- MQTT (https://github.com/knolleary/pubsubclient)
 
-L = 69,84 mm
-W = 70,87 mm
+# Dimension
+- L = 69,84 mm
+- W = 70,87 mm
