@@ -3,14 +3,14 @@
 #include <WiFiManager.h>
 #include <Ticker.h>
 
-const char *ssid = "LKIBIZ";
-const char *password = "lkibiz2019";
-const char *MQTT_SERVER = "192.168.10.164";
+const char *ssid = "..........";
+const char *password = "........";
+const char *MQTT_SERVER = "192.168.x.xxx";
 const char *MQTT_TOPIC = "switch/bedroom/1";
 
 const char *MQTT_CLIENT_ID = "switch_bedroom1";
-const char *MQTT_USERNAME = "eunbiline";
-const char *MQTT_PASSWORD = "hwangeunbi98";
+const char *MQTT_USERNAME = ".........";
+const char *MQTT_PASSWORD = "..........";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
