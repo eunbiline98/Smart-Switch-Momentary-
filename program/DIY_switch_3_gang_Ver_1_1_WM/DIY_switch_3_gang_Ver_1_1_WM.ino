@@ -3,8 +3,8 @@
 #include <WiFiManager.h>
 #include <Ticker.h>
 
-const char *ssid = "LKIBIZ";
-const char *password = "lkibiz2019";
+const char *ssid = ".........";
+const char *password = "........";
 const char *MQTT_SERVER = "192.168.x.xxx";
 const char *MQTT_TOPIC1 = "switch/bedroom1/1/state";
 const char *MQTT_TOPIC2 = "switch/bedroom1/2/state";
