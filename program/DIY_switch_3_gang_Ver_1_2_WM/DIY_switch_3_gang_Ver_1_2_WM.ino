@@ -7,10 +7,10 @@
 #include <DNSServer.h>
 
 // set at text box mqtt config manager
-#define MQTT_SERVER "..........."
-#define MQTT_PORT "........."
-#define MQTT_USERNAME  "......"
-#define MQTT_PASSWORD  "........."
+#define MQTT_SERVER "Input Your Broker"
+#define MQTT_PORT "Input Your Port"
+#define MQTT_USERNAME "Input Your Username"
+#define MQTT_PASSWORD "Input Your Password"
 
 const char *MQTT_TOPIC1 = "switch/bedroom1/1/state";
 const char *MQTT_TOPIC2 = "switch/bedroom1/2/state";
@@ -39,15 +39,16 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 Ticker ticker;
 
-//callback notifying us of the need to save config
-void saveConfigCallback () {
+// callback notifying us of the need to save config
+void saveConfigCallback()
+{
   Serial.println("Should save config");
   shouldSaveConfig = true;
 }
 
 void tick()
 {
-  //toggle state
+  // toggle state
   digitalWrite(2, !digitalRead(2)); // set pin GPIO2 Led Wemos On-board
 }
 
@@ -55,9 +56,9 @@ void configModeCallback(WiFiManager *myWiFiManager)
 {
   Serial.println("Entered config mode");
   Serial.println(WiFi.softAPIP());
-  //if you used auto generated SSID, print it
+  // if you used auto generated SSID, print it
   Serial.println(myWiFiManager->getConfigPortalSSID());
-  //entered config mode, make led toggle faster
+  // entered config mode, make led toggle faster
   ticker.attach(0.2, tick);
 }
 
@@ -67,19 +68,22 @@ void setup_wifi()
   pinMode(2, OUTPUT);
   ticker.attach(0.6, tick);
 
-  //clean FS for testing
-  //  SPIFFS.format();
+  // clean FS for testing
+  //   SPIFFS.format();
 
-  //read configuration from FS json
+  // read configuration from FS json
   Serial.println("mounting FS...");
 
-  if (SPIFFS.begin()) {
+  if (SPIFFS.begin())
+  {
     Serial.println("mounted file system");
-    if (SPIFFS.exists("/config.json")) {
-      //file exists, reading and loading
+    if (SPIFFS.exists("/config.json"))
+    {
+      // file exists, reading and loading
       Serial.println("reading config file");
       File configFile = SPIFFS.open("/config.json", "r");
-      if (configFile) {
+      if (configFile)
+      {
         Serial.println("opened config file");
         size_t size = configFile.size();
         // Allocate a buffer to store contents of the file.
@@ -87,28 +91,32 @@ void setup_wifi()
 
         configFile.readBytes(buf.get(), size);
         DynamicJsonBuffer jsonBuffer;
-        JsonObject& json = jsonBuffer.parseObject(buf.get());
+        JsonObject &json = jsonBuffer.parseObject(buf.get());
         json.printTo(Serial);
-        if (json.success()) {
+        if (json.success())
+        {
           Serial.println("\nparsed json");
           strcpy(MQTT_SERVER, json["mqtt_server"]);
           strcpy(MQTT_PORT, json["mqtt_port"]);
           strcpy(MQTT_USERNAME, json["mqtt_username"]);
           strcpy(MQTT_PASSWORD, json["mqtt_password"]);
-
-        } else {
+        }
+        else
+        {
           Serial.println("failed to load json config");
         }
       }
     }
-  } else {
+  }
+  else
+  {
     Serial.println("failed to mount FS");
   }
 
   WiFiManagerParameter custom_mqtt_server("server", "mqtt server", MQTT_SERVER, 40);
-  WiFiManagerParameter custom_mqtt_port("port", "mqtt port", MQTT_PORT, 6);
-  WiFiManagerParameter custom_mqtt_user("user", "mqtt user", MQTT_USERNAME, 20);
-  WiFiManagerParameter custom_mqtt_pass("pass", "mqtt pass", MQTT_PASSWORD, 20);
+  WiFiManagerParameter custom_mqtt_port("port", "mqtt port", MQTT_PORT, 40);
+  WiFiManagerParameter custom_mqtt_user("user", "mqtt user", MQTT_USERNAME, 40);
+  WiFiManagerParameter custom_mqtt_pass("pass", "mqtt pass", MQTT_PASSWORD, 40);
 
   WiFiManager wm;
   wm.setAPCallback(configModeCallback);
@@ -133,25 +141,27 @@ void setup_wifi()
   strcpy(MQTT_USERNAME, custom_mqtt_user.getValue());
   strcpy(MQTT_PASSWORD, custom_mqtt_pass.getValue());
 
-  //save the custom parameters to FS
-  if (shouldSaveConfig) {
+  // save the custom parameters to FS
+  if (shouldSaveConfig)
+  {
     Serial.println("saving config");
     DynamicJsonBuffer jsonBuffer;
-    JsonObject& json = jsonBuffer.createObject();
+    JsonObject &json = jsonBuffer.createObject();
     json["mqtt_server"] = MQTT_SERVER;
     json["mqtt_port"] = MQTT_PORT;
     json["mqtt_user"] = MQTT_USERNAME;
     json["mqtt_pass"] = MQTT_PASSWORD;
 
     File configFile = SPIFFS.open("/config.json", "w");
-    if (!configFile) {
+    if (!configFile)
+    {
       Serial.println("failed to open config file for writing");
     }
 
     json.printTo(Serial);
     json.printTo(configFile);
     configFile.close();
-    //end save
+    // end save
   }
 
   ticker.detach();
@@ -224,11 +234,13 @@ void callback(char *topic, byte *message, unsigned int length)
 
   if (String(topic) == SWITCH1)
   {
-    if (messageTemp == "1") {
+    if (messageTemp == "1")
+    {
       digitalWrite(relay_1, HIGH);
       client.publish(MQTT_TOPIC1, "1");
     }
-    else if (messageTemp == "0") {
+    else if (messageTemp == "0")
+    {
       digitalWrite(relay_1, LOW);
       client.publish(MQTT_TOPIC1, "0");
     }
@@ -236,11 +248,13 @@ void callback(char *topic, byte *message, unsigned int length)
 
   if (String(topic) == SWITCH2)
   {
-    if (messageTemp == "1") {
+    if (messageTemp == "1")
+    {
       digitalWrite(relay_2, HIGH);
       client.publish(MQTT_TOPIC2, "1");
     }
-    else if (messageTemp == "0") {
+    else if (messageTemp == "0")
+    {
       digitalWrite(relay_2, LOW);
       client.publish(MQTT_TOPIC2, "0");
     }
@@ -257,7 +271,7 @@ void reconnect()
     if (client.connect(MQTT_CLIENT_ID, MQTT_USERNAME, MQTT_PASSWORD, MQTT_STATUS, 1, 1, "Offline"))
     {
       Serial.println("connected");
-      //subscribe
+      // subscribe
       client.subscribe(SWITCH1);
       client.subscribe(SWITCH2);
       client.publish(MQTT_STATUS, "Online", true);
@@ -280,16 +294,15 @@ void setup()
   setup_wifi();
 
   // MQTT Server Setup
-  client.setServer(MQTT_SERVER, 1883);
+  client.setServer(MQTT_SERVER, atoi(MQTT_PORT));
   client.setCallback(callback);
 
-  pinMode(2, OUTPUT); //WiFi Indicator
+  pinMode(2, OUTPUT); // WiFi Indicator
   pinMode(relay_1, OUTPUT);
   pinMode(relay_2, OUTPUT);
 
   pinMode(btn_1, INPUT);
   pinMode(btn_2, INPUT);
-
 }
 
 void loop()
