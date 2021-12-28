@@ -1,5 +1,5 @@
 var mqtt    = require('mqtt');
-var client  = mqtt.connect('ws://mqtt-atmduino.herokuapp.com');
+var client  = mqtt.connect('ws://mqtt-cloud-atmduino.herokuapp');
 
 client.on('connect', function () {
   client.subscribe('presence');

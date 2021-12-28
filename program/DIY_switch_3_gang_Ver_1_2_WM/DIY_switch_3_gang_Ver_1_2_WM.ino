@@ -103,6 +103,7 @@ void setup_wifi()
         }
         else
         {
+
           Serial.println("failed to load json config");
         }
       }
