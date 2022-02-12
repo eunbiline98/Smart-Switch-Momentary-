@@ -18,9 +18,10 @@ List Item
 ![schematic momentary switch wifi](https://user-images.githubusercontent.com/50385294/137615797-40eabae7-91a9-4d51-8ee7-6c4925abf029.png)
 
 # Layout
+# Top View![top](https://user-images.githubusercontent.com/50385294/153718262-748fac80-c54a-4422-93d3-b740af4d3688.png)
+# Bottom View![bottom](https://user-images.githubusercontent.com/50385294/153718265-bfd68d42-da99-45b3-b110-b32c2d87526a.png)
 
-![top](https://user-images.githubusercontent.com/50385294/137615904-3dadf27e-84cb-428c-ba0b-feadd11fd143.PNG)
-![bottom](https://user-images.githubusercontent.com/50385294/137615920-cbbb3435-f090-4ed2-a7e0-80b1b173c4fb.PNG)
+
 
 # Home Assistant
 
