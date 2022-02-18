@@ -14,8 +14,8 @@ List Item
 - Push Button (schneider momentary switch) Datasheet: https://download.schneider-electric.com/files?p_enDocType=Instruction+sheet&p_File_Name=MS18524.pdf&p_Doc_Ref=MS18524
 
 # Schematic
+![schematic](https://user-images.githubusercontent.com/50385294/154659528-6e8deea5-2baf-4d5b-a5e0-4af0041f86ca.png)
 
-![schematic momentary switch wifi](https://user-images.githubusercontent.com/50385294/137615797-40eabae7-91a9-4d51-8ee7-6c4925abf029.png)
 
 # Layout Top View 
 ![Screenshot 2022-02-18 163614](https://user-images.githubusercontent.com/50385294/154657791-f572e95e-0cb7-4fda-842f-4ccfcbfc2a54.png)
