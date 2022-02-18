@@ -18,9 +18,11 @@ List Item
 
 
 # Layout Top View 
-![Screenshot 2022-02-18 163614](https://user-images.githubusercontent.com/50385294/154657791-f572e95e-0cb7-4fda-842f-4ccfcbfc2a54.png)
+![top](https://user-images.githubusercontent.com/50385294/154709453-05c07d4c-11e6-472c-9187-6c4efa44a15e.png)
+
 # Layout Bottom View
-![Screenshot 2022-02-18 163649](https://user-images.githubusercontent.com/50385294/154657780-461a0472-75ee-4fb4-809c-ebf900b1a6ee.png)
+![bottom](https://user-images.githubusercontent.com/50385294/154709513-598d03b8-4112-4c04-b537-8adc44decbe5.png)
+
 
 
 
