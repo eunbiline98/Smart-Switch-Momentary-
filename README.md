@@ -4,7 +4,7 @@ DIY Smart Switch momentary 2 Gang and 2 Channel Relay SPDT
 
 List Item
 
-- Esp8266 (Wemos D1 Mini)
+- Esp8266 (Wemos D1 Mini) / Chip SoC Esp8266
 - Relay 5VDC SPDT Songle (Max Current 10A)
 - Power Module Hi-Link 220VAC to 5VDC
 - Resistor 1k, 10K (SMD 0805)
